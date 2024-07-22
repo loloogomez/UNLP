@@ -1,0 +1,29 @@
+programa Ejer5d
+procesos
+  proceso Moverse
+  comenzar
+    repetir 2
+      mover
+    derecha
+    repetir 4
+      mover
+    repetir 3
+      derecha
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar  
+    repetir 2
+      Moverse
+    derecha
+    repetir 2
+      Moverse         
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,5)
+fin

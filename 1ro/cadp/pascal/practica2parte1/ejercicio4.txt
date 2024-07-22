@@ -1,0 +1,5 @@
+el primer programa va a imprimir:
+1
+21
+
+y el segundo programa da error porque la variable a no esta declarada ni en el procedure ni de forma global

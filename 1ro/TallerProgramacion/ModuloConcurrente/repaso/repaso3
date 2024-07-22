@@ -1,0 +1,185 @@
+programa parcialViejo1
+procesos
+  proceso moverse (ES cantEsquinas: numero)
+  variables
+    num: numero
+    cantFlores: numero
+  comenzar
+    mientras (PosCa < 40)
+      cantFlores := 0
+      si (PosCa + num = 20)
+        BloquearEsquina (PosAv, 20)
+        repetir (num)
+          mover
+        mientras (HayFlorEnLaEsquina)
+          tomarFlor
+          cantFlores := cantFlores + 1
+          Pos (PosAv, 1)
+          LiberarEsquina (PosAv, 20)
+          BloquearEsquina (PosAv, 20)
+          Pos (PosAv, 20)
+        si (cantFlores < 1)
+          cantEsquinas := cantEsquinas + 1
+        repetir cantFlores
+          depositarFlor
+        Random (num, 1, 6)
+        repetir (num)
+          mover
+        LiberarEsquina (PosAv, PosCa - num)
+      sino
+        mientras (HayFlorEnLaEsquina)
+          tomarFlor
+          cantFlores := cantFlores + 1
+        si (cantFlores < 1)
+          cantEsquinas := cantEsquinas + 1
+        repetir (cantFlores)
+          depositarFlor
+        Random (num, 1, 6)
+        si (PosCa + num <> 20)
+          repetir (num)
+            mover
+  fin
+  
+  proceso limpiar
+  comenzar
+    derecha
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+    mientras (HayPapelEnLaEsquina)
+      tomarPapel
+    repetir (13)
+      mover
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+      mientras (HayPapelEnLaEsquina)
+        tomarPapel
+    BloquearEsquina (15, 20)
+    mover
+    mientras (HayFlorEnLaEsquina) | (HayPapelEnLaEsquina)
+      si (HayFlorEnLaEsquina)
+        tomarFlor
+      si (HayPapelEnLaEsquina)
+        tomarPapel
+      Pos(1, 20)
+      LiberarEsquina (15, 20)
+      BloquearEsquina (15, 20)
+      Pos (15, 20)
+    mover
+    LiberarEsquina (15, 20)
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+    mientras (HayPapelEnLaEsquina)
+      tomarPapel
+    repetir (8)
+      mover
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+      mientras (HayPapelEnLaEsquina)
+        tomarPapel
+    BloquearEsquina (25, 20)
+    mover
+    mientras (HayFlorEnLaEsquina) | (HayPapelEnLaEsquina)
+      si (HayFlorEnLaEsquina)
+        tomarFlor
+      si (HayPapelEnLaEsquina)
+        tomarPapel
+      Pos(1, 20)
+      LiberarEsquina (25, 20)
+      BloquearEsquina (25, 20)
+      Pos (25, 20)
+    mover
+    LiberarEsquina (25, 20)
+    mientras (HayFlorEnLaEsquina)
+      tomarFlor
+    mientras (HayPapelEnLaEsquina)
+      tomarPapel
+    repetir (74)
+      mover
+      mientras (HayFlorEnLaEsquina)
+        tomarFlor
+      mientras (HayPapelEnLaEsquina)
+        tomarPapel
+  fin
+
+areas
+  area1: AreaP (15, 1, 15, 19)
+  areaCom1: AreaPC(15, 20, 15, 20)
+  area2: AreaP (15,21, 15, 45)
+  area3: AreaP (25, 1, 25, 19)
+  areaCom2: AreaPC (25,20, 25, 20)
+  area4: AreaP (25, 21, 25, 45)
+  area5: AreaP (1, 20, 14, 20)
+  area6: AreaP (16, 20, 24, 20)
+  area7: AreaP (26, 20, 100, 20)
+  areaJ : AreaP (1,1, 1,1)
+
+robots
+  robot robotCorredor
+  variables
+    num: numero
+    id: numero
+    cantEsquinas: numero
+  comenzar
+    RecibirMensaje (id, rJ) 
+    moverse (cantEsquinas)
+    EnviarMensaje (id, rJ)
+    EnviarMensaje (cantEsquinas, rJ)
+  fin
+  
+  robot robotRecolector
+  comenzar
+    limpiar
+  fin
+  
+  robot robotJ
+  variables
+    id: numero
+    cantEsquinas: numero
+    cantEsquinas2: numero
+  comenzar
+    EnviarMensaje (1, r1)
+    EnviarMensaje (2, r2)
+    RecibirMensaje (id, *)
+    si (id = 1)
+      RecibirMensaje (cantEsquinas, r1)
+    sino
+      RecibirMensaje (cantEsquinas2, r2)
+    si (id = 1)
+      RecibirMensaje (id, r2)
+      RecibirMensaje (cantEsquinas2, r2)
+    sino
+      RecibirMensaje (id, r1)
+      RecibirMensaje (cantEsquinas, r1)
+    Informar(id)
+    si (id = 1)
+      Informar (cantEsquinas1)
+    sino
+      Informar (cantEsquinas2)
+  fin
+variables
+  r1: robotCorredor
+  r2: robotCorredor
+  rJ: robotJ
+  r3: robotRecolector
+comenzar
+  AsignarArea (r1, area1)
+  AsignarArea (r1, areaCom1)
+  AsignarArea (r1, area2)
+  AsignarArea (r2, area3)
+  AsignarArea (r2, areaCom2)
+  AsignarArea (r2, area4)
+  AsignarArea (r3, area5)
+  AsignarArea (r3, areaCom1)
+  AsignarArea (r3, area6)
+  AsignarArea (r3, areaCom2)
+  AsignarArea (r3, area7)
+  AsignarArea (rJ, areaJ)
+  Iniciar (r1, 15, 1)
+  Iniciar (r2, 25, 1)
+  Iniciar (r3, 1, 20)
+  Iniciar (rJ, 1,1)
+fin
+  
+      
+  
+    

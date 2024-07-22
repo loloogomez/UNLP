@@ -1,0 +1,26 @@
+programa Ejer3
+procesos
+  proceso Rectangulo (E A: numero; E L: numero)
+  comenzar
+    repetir 2
+      repetir A
+        mover
+      derecha
+      repetir L
+        mover
+      derecha
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+  comenzar
+    Rectangulo (3,5)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin

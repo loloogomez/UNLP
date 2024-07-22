@@ -1,0 +1,77 @@
+programa parcialViejo1
+procesos
+  proceso juntarPapeles(E oportunidades: numero; ES papeles: numero; E avI: numero; E caI: numero)
+  variables
+    av: numero
+    ca: numero
+  comenzar
+    repetir (oportunidades)
+      Random(av, 3, 63)
+      Random (ca, 6, 16)
+      BloquearEsquina(av, ca)
+      Pos (av, ca)
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        papeles := papeles + 1
+      Pos(avI, caI)
+      LiberarEsquina(av, ca)
+  fin
+areas
+  area1: AreaPC (3,6, 63,16)
+  area2: AreaP (1,6, 1,6)
+  area3: AreaP (1,7, 1,7)
+  area4: AreaP (1,8, 1,8)
+robots
+  robot robotP
+  variables
+    id: numero
+    avI: numero
+    caI: numero
+    oportunidades: numero
+    papeles: numero
+    ganador: boolean
+  comenzar
+    RecibirMensaje (avI, r3)
+    RecibirMensaje (caI, r3)
+    RecibirMensaje (oportunidades, r3)
+    juntarPapeles(oportunidades, papeles, avI, caI)
+    EnviarMensaje (papeles, r3)
+    RecibirMensaje (ganador, r3)
+    si (ganador = V)
+      Pos (3, 6)
+  fin
+  robot robotJ
+  variables
+    papeles1: numero
+    papeles2: numero
+    oportunidades: numero
+  comenzar
+    EnviarMensaje (1, r1)
+    EnviarMensaje (6, r1)
+    EnviarMensaje (1, r2)
+    EnviarMensaje (7, r2)
+    Random (oportunidades, 1, 8)
+    EnviarMensaje (oportunidades, r1)
+    Random (oportunidades, 1, 8)
+    EnviarMensaje (oportunidades, r2)
+    RecibirMensaje (papeles1, r1)
+    RecibirMensaje (papeles2, r2)
+    si (papeles1 > papeles2)
+      EnviarMensaje (V, r1)
+    sino
+      EnviarMensaje (V, r2)
+  fin
+variables
+  r1: robotP
+  r2: robotP
+  r3: robotJ
+comenzar
+  AsignarArea (r1, area1)
+  AsignarArea (r1, area2)
+  AsignarArea (r2, area1)
+  AsignarArea (r2, area3)
+  AsignarArea (r3, area4)
+  Iniciar (r3, 1,8)
+  Iniciar(r1, 1,6)
+  Iniciar(r2, 1,7)
+fin

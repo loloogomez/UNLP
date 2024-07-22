@@ -1,0 +1,72 @@
+programa ejer3-7
+procesos
+  proceso irYJuntar(ES HayFlores: boolean; ES flores: numero)
+  comenzar
+    BloquearEsquina(15,23)
+    Pos(15,23)
+    si (HayFlorEnLaEsquina)
+      tomarFlor
+      flores:= flores + 1
+    sino
+      HayFlores := F
+  fin
+areas
+  area1: AreaC(15,23,15,23)
+  area2: AreaP (9,9,9,9)
+  area3: AreaP(11,9,11,9)
+  area4: AreaP(13,9,13,9)
+robots
+  robot tipo1
+  variables
+    HayFlores: boolean
+    flores: numero
+  comenzar
+    HayFlores := V
+    flores := 0
+    mientras (HayFlores = V)
+      irYJuntar(HayFlores, flores)
+      Pos(9,9)
+      LiberarEsquina(15,23)
+    Informar('r1', flores)
+  fin
+  robot tipo2
+  variables
+    HayFlores: boolean
+    flores: numero
+  comenzar
+    HayFlores := V
+    flores := 0
+    mientras (HayFlores = V)
+      irYJuntar(HayFlores, flores)
+      Pos(11,9)
+      LiberarEsquina(15,23)
+    Informar('r2', flores)
+  fin
+  robot tipo3
+  variables
+    HayFlores: boolean
+    flores: numero
+  comenzar
+    HayFlores := V
+    flores := 0
+    mientras (HayFlores = V)
+      irYJuntar(HayFlores, flores)
+      Pos(13,9)
+      LiberarEsquina(15,23)
+    Informar('r3', flores)
+  fin
+variables
+  r1: tipo1
+  r2: tipo2
+  r3: tipo3
+comenzar
+  AsignarArea(r1, area2)
+  AsignarArea (r1, area1)
+  AsignarArea(r2,area3)
+  AsignarArea (r2, area1)
+  AsignarArea(r3, area4)
+  AsignarArea(r3, area1)
+  Iniciar(r1, 9,9)
+  Iniciar(r2, 11,9)
+  Iniciar (r3, 13,9)
+fin

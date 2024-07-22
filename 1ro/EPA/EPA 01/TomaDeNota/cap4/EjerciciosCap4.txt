@@ -1,0 +1,220 @@
+1) a)
+
+informar v si en la esquina 4,3 hay flor y no papel y tomarla, de lo contrario informar f
+
+b)
+
+ir a la avenida 6 y moverse si hay una flor en la esquina en la que se encuentra el robot parado, tambien es necesario tomar la flor, la esquina 6,1 no se analiza
+
+c)
+
+Supongo que el mover no tendria que estar dentro del mientras HayFlorEnLaEsquina, asi el robot tendria que tomar todas las flores de la avenida 1,
+
+si fue intencional el mover dentro del mientras HayFlorEnLaEsquina, el robot se movera sugun la cantidad de flores que pueda recoger, pudiendo asi pasar las 100 calles, lo que daria un error, y analizando por ultima vez si hay flor para recoger despues de que no encuentre una flor en la esquina en la que esta parado.
+
+d)
+
+El robot informara 1 y se movera, si en la esquina en que se encuentra o no hay nada, o solo hay papel, o solo hay flores
+
+e)
+
+En este ejemplo tambien creo que hay un error de tabulacion
+
+pero como esta, Hace que el robot recorra la calle 20, y avance solo si en la esquina hay al menos una flor, recogiendolas, y la variable sin flor nunca va a poder cambiar ya que ahi se genera una contradiccion
+
+f)
+
+Este programa cuenta la cantidad de flores y de papeles similares que se pueden recoger en 1,1 , cuando ya no haya uno de estos en la esquina, el programa se parara
+
+
+2)
+
+programa Cap4Ejer2
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos(5,3)
+    derecha
+    si HayPapelEnLaBolsa
+      depositarPapel
+    mientras ((HayPapelEnLaBolsa) & (PosAv <20))
+      mover 
+      depositarPapel
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+3)
+
+programa Cap4Ejer3
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    Pos (1,45)
+    derecha
+    repetir 49
+      depositarPapel
+      mover
+      depositarFlor
+      mover 
+    depositarPapel
+    mover
+    depositarFlor
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+4)
+
+programa Cap4Ejer4
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    soloP: numero
+    soloF: numero
+  comenzar
+    Pos(1,20)
+    derecha
+    si HayFlorEnLaEsquina & ~HayPapelEnLaEsquina
+      soloF:= soloF +1
+    si HayPapelEnLaEsquina & ~HayFlorEnLaEsquina
+      soloP:= soloP +1
+    repetir 99
+      mover
+      si HayFlorEnLaEsquina & ~HayPapelEnLaEsquina
+        soloF:= soloF +1
+      si HayPapelEnLaEsquina & ~HayFlorEnLaEsquina
+        soloP:= soloP +1
+    Informar(soloF)
+    Informar(soloP)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+5)
+
+programa Cap4Ejer5
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot  robot1
+  comenzar
+    si HayPapelEnLaEsquina & ~HayFlorEnLaEsquina
+      depositarPapel
+    si HayFlorEnLaEsquina & ~HayPapelEnLaEsquina
+      depositarFlor
+    repetir 4
+      repetir 99
+        mover
+        si HayPapelEnLaEsquina & ~HayFlorEnLaEsquina
+          depositarPapel
+        si HayFlorEnLaEsquina & ~HayPapelEnLaEsquina
+          depositarFlor
+      derecha
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+6)
+
+programa Cap4Ejer6
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+    papeles: numero 
+  comenzar
+    repetir 4
+      repetir 99
+        papeles:= 0
+        flores:= 0
+        mover
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+          papeles:= papeles +1
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+          flores:= flores +1
+        si (papeles =3)& (flores =3)  
+          Informar (PosAv, PosCa)
+      derecha
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+7)
+
+programa Cap4Ejer6
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+    papeles: numero 
+  comenzar
+    repetir 4
+      repetir 99
+        papeles:= 0
+        flores:= 0
+        mover
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+          papeles:= papeles +1
+        mientras HayFlorEnLaEsquina
+          tomarFlor
+          flores:= flores +1
+        si (papeles =3)& (flores =3)  
+          Informar (PosAv, PosCa)
+      derecha
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+8)
+
+a) No, no se puede asegurar esto, ya que depende de las cosas que haya o no haya en cada esquina, ya que solo avanzara de avenida si hay o al menos un papel o al menos una flor en la esquina
+b) Si, ya que la repeticion no depende de ninguna variable
+c) El robot no se puede caer de la ciudad ya que esta la proposicion PosAv < 100 dentro del mientras de mover
+d) no, en las 5 primeras esquinas que recorre sobre la avenida 1 no tienen que haber flores o papeles necesariamente
+e) no, justamente no levantara nada porque si hubiese o papeles o flores el robot se seguiria moviendo
+f) no, esto se justifica con la explicacion anterior
+
+
+
+

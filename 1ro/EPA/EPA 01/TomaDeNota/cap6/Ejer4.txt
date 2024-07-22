@@ -1,0 +1,65 @@
+programa Ejer4a
+procesos
+  proceso Rectangulo (E A: numero; E L: numero)
+  comenzar
+    repetir 2
+      repetir A
+        mover
+      derecha
+      repetir L
+        mover
+      derecha
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    alto: numero
+    largo: numero
+  comenzar
+    largo:= 5
+    repetir 3  
+      Rectangulo (1,largo)
+      largo:= largo -2
+      Pos(PosAv +1, PosCa +2)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+programa Ejer4b
+procesos
+  proceso Rectangulo (E A: numero)
+  comenzar
+    repetir 2
+      repetir A
+        mover
+      derecha
+      mover
+      derecha
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    alto: numero
+  comenzar
+    alto:= 15
+    repetir 4
+      Rectangulo (alto)
+      alto:= alto -4
+      Pos(PosAv +1, PosCa +2)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+

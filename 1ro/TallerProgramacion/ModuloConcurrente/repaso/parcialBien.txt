@@ -1,0 +1,166 @@
+programa GomezGarese
+procesos
+  proceso juntarFlores (ES flores: numero; E av: numero; E ca: numero; E id: numero)
+  comenzar
+    repetir 10
+      si (id = 2) 
+        av:= av + 1
+      sino
+        av := av - 1
+      BloquearEsquina (av, ca)
+      Pos (av, ca)
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        flores := flores + 1
+      LiberarEsquina (av, ca)
+  fin
+  proceso moverFlores (E av: numero; E ca: numero; E id: numero)
+  variables
+    avenida: numero
+    calle: numero
+  comenzar
+    avenida := av
+    calle := ca
+    repetir 10   
+      si (id = 1)|(id = 3)
+        avenida := avenida + 1
+      sino
+        avenida:= avenida -1
+      Pos (avenida, calle)
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+      Pos (av, ca)
+      si (id = 1) | (id = 4)
+        calle:= calle - 1
+      sino
+        calle := calle + 1
+      BloquearEsquina (avenida, calle)
+      Pos(avenida, calle)
+      mientras HayFlorEnLaBolsa
+        depositarFlor
+      Pos (av, ca)
+      LiberarEsquina (avenida, calle)
+      si (id = 1 )| (id = 4)
+        calle:= calle + 1
+      sino
+        calle := calle - 1
+  fin
+
+areas
+  area1: AreaP (9, 21, 19, 21)
+  area2: AreaPC (9, 20, 19, 20)
+  area3: AreaP (9, 19, 19, 19)
+  area4: AreaP (21, 21, 31, 21)
+  area5: AreaPC (21, 20, 31, 20)
+  area6: AreaP (21, 19, 31, 19)
+  areaJ: AreaP (20, 18, 20, 18)
+  areaF: AreaPC (20,20, 20, 20)
+robots
+  robot robotRecolector
+  variables
+    id: numero
+    flores: numero
+    av: numero
+    ca: numero
+    listo: numero
+  comenzar
+    RecibirMensaje (id, r7)
+    RecibirMensaje (listo, *)
+    RecibirMensaje (listo, *)
+    si (id = 2)
+      av := 9
+      ca := 20
+    sino
+      av := 31
+      ca:= 20
+    juntarFlores (flores, av, ca, id)
+    BloquearEsquina (20,20)
+    Pos(20, 20)
+    EnviarMensaje (id, r7)
+    EnviarMensaje (flores, r7)
+    mientras HayFlorEnLaBolsa
+      depositarFlor
+    Pos(av, ca)
+    LiberarEsquina (20, 20)
+  fin
+  robot robotMovedor
+  variables
+    id: numero
+    av: numero
+    ca: numero
+  comenzar
+    RecibirMensaje (id, r7)
+    si (id = 1 )| (id = 4)
+      ca := 21
+    sino
+      ca:= 19
+    si (id = 1 ) | (id = 3)
+      av:= 9
+    sino
+      av:= 31
+    moverFlores (av, ca, id)
+    si (id = 1 )| (id = 3)
+      EnviarMensaje (1, r2)
+    sino
+      EnviarMensaje (1, r5)
+  fin
+  robot robotJ
+  variables
+    id: numero
+    floresAzules: numero
+    floresVerdes: numero
+    primero: numero
+  comenzar
+    EnviarMensaje (1, r1)
+    EnviarMensaje (2, r2)
+    EnviarMensaje (3, r3)
+    EnviarMensaje (4, r4)
+    EnviarMensaje (5, r5)
+    EnviarMensaje (6, r6)
+    RecibirMensaje (id, *)
+    primero := id
+    si (primero = 2)
+      RecibirMensaje (floresAzules, r2)
+    sino
+      RecibirMensaje (floresVerdes, r5)
+    RecibirMensaje (id, *)
+    si (id = 2)
+      RecibirMensaje (floresAzules, r2)
+    sino
+      RecibirMensaje (floresVerdes, r5)
+    si (floresAzules > floresVerdes)
+      Informar(1)
+    sino
+      Informar(2)
+    Informar (primero)
+  fin
+variables
+  r1: robotMovedor
+  r2: robotRecolector
+  r3: robotMovedor
+  r4: robotMovedor
+  r5: robotRecolector
+  r6: robotMovedor
+  r7: robotJ
+comenzar
+  AsignarArea(r1, area1)
+  AsignarArea (r1, area2)
+  AsignarArea (r2, area2)
+  AsignarArea (r2, areaF)
+  AsignarArea (r3, area3)
+  AsignarArea (r3, area2)
+  AsignarArea (r4, area4)
+  AsignarArea (r4, area5)
+  AsignarArea (r5, area5)
+  AsignarArea (r5, areaF)
+  AsignarArea (r6, area6)
+  AsignarArea (r6, area5)
+  AsignarArea (r7, areaJ)
+  Iniciar(r1, 9, 21)
+  Iniciar(r2, 9, 20)
+  Iniciar(r3, 9, 19)
+  Iniciar(r4, 31, 21)
+  Iniciar(r5, 31, 20)
+  Iniciar(r6, 31, 19)
+  Iniciar(r7, 20, 18)
+fin    

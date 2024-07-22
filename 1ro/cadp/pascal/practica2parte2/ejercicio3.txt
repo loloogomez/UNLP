@@ -1,0 +1,8 @@
+3)
+
+1) c es solo de entrada
+2) no se puede poner un numero en la declaracion del proceso
+3) en vez de 0 tiene que ser result
+4) var a , b y ok no declaradas
+5) var suma innecesaria
+6) var ok innecesaria

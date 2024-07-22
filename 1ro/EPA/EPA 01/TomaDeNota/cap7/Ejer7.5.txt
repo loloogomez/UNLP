@@ -1,0 +1,40 @@
+programa Ejer75
+procesos
+  proceso Flores (ES Flores: numero)
+  variables
+    FloresEsquina: numero
+  comenzar
+    FloresEsquina:= 0
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      Flores:= Flores +1
+      FloresEsquina:= FloresEsquina +1
+    repetir FloresEsquina
+      depositarFlor
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+    Mas50Flores: numero
+  comenzar
+    derecha
+    repetir 99
+      flores:= 0
+      Flores (flores)
+      repetir 99
+        mover
+        Flores (flores)
+      si (flores > 50)
+        Mas50Flores:= Mas50Flores +1 
+      Pos(1,PosCa +1)
+    Informar (Mas50Flores)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin

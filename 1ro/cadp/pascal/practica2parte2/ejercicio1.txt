@@ -1,0 +1,8 @@
+a) si la variabe x es 10 imprime 65
+
+b) el programa no va a funcionar porque la variable num2 va a ser solo de entrada y no de entrada salida
+
+c) El programa funcionara normalmente aunque num1 va a ser innecesariamente de entrada y salida, ya que solo necesita ser de entrada
+
+
+

@@ -1,0 +1,36 @@
+programa Ejer2
+procesos
+  proceso AgarrarFlor
+  comenzar
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+  fin
+  proceso DejarFlor
+  comenzar
+    Pos(PosAv, PosCa +1)
+    mientras HayFlorEnLaBolsa
+      depositarFlor
+    Pos(PosAv +1, PosCa -1)
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    derecha
+    repetir 49
+      repetir 99
+        AgarrarFlor
+        DejarFlor
+      AgarrarFlor
+      Pos(PosAv, PosCa +1)
+      mientras HayFlorEnLaBolsa
+        depositarFlor
+      Pos(1, PosCa +1)      
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,89)
+fin

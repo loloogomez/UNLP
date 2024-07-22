@@ -1,0 +1,33 @@
+programa Ejemplo71
+procesos
+  proceso CantidadFlores (ES Flores: numero)
+  variables
+    FloresEsquina: numero
+  comenzar
+    FloresEsquina:=0
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      Flores:= Flores +1
+      FloresEsquina:= FloresEsquina +1
+    repetir FloresEsquina
+      depositarFlor
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+  comenzar
+    CantidadFlores (flores)
+    repetir 99
+      mover
+      CantidadFlores (flores)
+    Informar (flores) 
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,4,1)
+fin

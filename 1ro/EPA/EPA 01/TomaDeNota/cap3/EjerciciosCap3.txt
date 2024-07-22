@@ -1,0 +1,363 @@
+1) a) 
+	
+	i- va a tomar 99 flores menos en (6,1)
+	ii- no se va a mover
+	iii- tampoco se va a mover
+
+	
+b) 
+
+	i- no se va a mover, y la variable va a ser 0
+	ii- se va a mover hasta la calle 11 y va a informar 10
+	iii- va a ocurrir lo mismo que en la anterior
+	iv- va a ocurrir lo mismo que en la anterior
+
+2) 
+
+i-
+
+programa Epa3Ejer2
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+  comenzar
+    Pos (1,44)
+    derecha
+    repetir 99
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        flores := flores + 1
+      mover
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      flores:= flores + 1
+    Informar (flores)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea (R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+ii-
+
+programa Epa3Ejer2
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+  comenzar
+    Pos (1,44)
+    derecha
+    repetir 99
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        flores := flores + 1
+      mientras HayFlorEnLaBolsa
+        depositarFlor  
+      mover
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      flores:= flores + 1
+    mientras HayFlorEnLaBolsa
+      depositarFlor
+    Informar (flores)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea (R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+3)
+
+programa Epa3Ejer3
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    EsquinasVacias: numero
+  comenzar
+    repetir 1
+      repetir 99
+        si ~((HayFlorEnLaEsquina)|(HayPapelEnLaEsquina))
+          EsquinasVacias:= EsquinasVacias + 1
+        mover
+      si ~((HayFlorEnLaEsquina)|(HayPapelEnLaEsquina))
+        EsquinasVacias:= EsquinasVacias + 1
+      Pos(PosAv+1,1)
+    repetir 99
+      si ~((HayFlorEnLaEsquina)|(HayPapelEnLaEsquina))
+        EsquinasVacias:= EsquinasVacias + 1
+      mover
+    si ~((HayFlorEnLaEsquina)|(HayPapelEnLaEsquina))
+      EsquinasVacias:= EsquinasVacias + 1
+    derecha
+    Pos(1,1)
+    repetir 1
+      repetir 99
+        si ~((HayFlorEnLaEsquina)|(HayPapelEnLaEsquina))
+          EsquinasVacias:= EsquinasVacias + 1
+        mover
+      si ~((HayFlorEnLaEsquina)|(HayPapelEnLaEsquina))
+        EsquinasVacias:= EsquinasVacias + 1
+      Pos(1,PosCa+1)
+    repetir 99
+      si ~((HayFlorEnLaEsquina)|(HayPapelEnLaEsquina))
+        EsquinasVacias:= EsquinasVacias + 1
+      mover
+    si ~((HayFlorEnLaEsquina)|(HayPapelEnLaEsquina))
+      EsquinasVacias:= EsquinasVacias + 1
+    Informar(EsquinasVacias)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea (R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+4)
+
+programa Cap3Ejer4
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+  comenzar
+    flores:= 0
+    Pos(1,7)
+    derecha
+    si HayFlorEnLaEsquina
+      flroes:= flores + 1
+    mientras ~(flores = 20)  
+      mover
+      si HayFlorEnLaEsquina
+        flores:= flores +1       
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+  
+
+5)
+
+
+programa Cap3Ejer5
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+  comenzar
+    flores:= 0
+    Pos(1,7)
+    derecha
+    si HayFlorEnLaEsquina
+      flores:= flores + 1 
+    repetir 99
+      si ~(flores = 20)
+        mover
+        si HayFlorEnLaEsquina
+          flores:= flores +1     
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+6)
+
+programa Cap3Ejer6
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+  comenzar
+    flores:= 0
+    Pos(1,7)
+    derecha
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      flores:= flores + 1 
+    mientras ~(flores = 20)
+      mover
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        flores:= flores +1     
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+
+7)
+
+programa Cap3Ejer7
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    papeles: numero
+    papeles6: numero
+  comenzar
+    Pos(1,34)
+    derecha
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      papeles:= papeles +1
+    si (papeles =6)
+      papeles6:= papeles6 +1
+    papeles:= 0
+    repetir 99
+      mover
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        papeles:= papeles +1
+      si (papeles =6)
+        papeles6:= papeles6 +1
+      papeles:= 0
+    Informar(papeles6)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+8) 
+
+programa Cap3Ejer8
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    papeles: numero
+  comenzar
+    papeles:= 0
+    Pos(1,2)
+    derecha
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      papeles:= papeles +1
+    mientras ((PosAv <100)&(papeles <10)) 
+      mover
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        papeles:= papeles +1
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+9)
+
+programa Cap3Ejer9
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    papeles: numero
+    flores: numero
+  comenzar
+    papeles:= 0
+    flores:= 0
+    Pos(1,2)
+    derecha
+    mientras ((HayPapelEnLaEsquina)&(papeles <10))
+      tomarPapel
+      papeles:= papeles +1
+    mientras ((HayFlorEnLaEsquina)&(flores <4))
+      tomarFlore
+      flores:= flores +1
+    mientras ((flores <4)|(papeles <10)) 
+      mover
+      mientras ((HayPapelEnLaEsquina)&(papeles <10))
+        tomarPapel
+        papeles:= papeles +1
+      mientras ((HayFlorEnLaEsquina)&(flores <4))
+        tomarFlor
+        flores:= flores +1
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+10)
+
+programa Cap3Ejer10
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    papeles: numero
+    papelesD: numero
+  comenzar
+    repetir 4
+      {papeles totales de cada lado (incluyendo esquinas que se comparten)}
+      papeles:= 0
+      {papeles a depositar}
+      papelesD:= 0
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        papeles:= papeles +1
+        papelesD:= papelesD +1
+      {para mantener el numero de papeles en las esquinas, porque estas pertenecen a dos lados}
+      repetir (papelesD)
+        depositarPapel
+      repetir 99
+        papelesD:= 0
+        mover
+        mientras HayPapelEnLaEsquina
+          tomarPapel
+          papeles:= papeles +1
+          papelesD:= papelesD +1
+        {para mantener el numero de papeles en las esquinas, porque estas pertenecen a dos lados}
+        repetir (papelesD)
+          depositarPapel
+      derecha
+      Informar (papeles)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin
+
+

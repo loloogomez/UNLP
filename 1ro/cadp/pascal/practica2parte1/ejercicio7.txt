@@ -1,0 +1,9 @@
+a) tendria que poner prom := calcularPromedio 
+
+b) poniendo una variable en el programa principal que obtenga el valor de calcularPromedio
+
+c)a) no retornaria nada
+
+b) retornaria 0
+
+c) retornaria 8

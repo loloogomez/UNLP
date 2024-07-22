@@ -1,0 +1,1 @@
+da error porque la variable b no esta declarada de forma global, solo esta en el procedure uno.

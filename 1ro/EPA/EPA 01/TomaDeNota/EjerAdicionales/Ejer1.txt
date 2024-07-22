@@ -1,0 +1,36 @@
+programa Ejer1
+procesos
+  proceso AgarrarFlor (ES Flores: numero)
+  variables
+    FlorEsquina: numero
+  comenzar
+    FlorEsquina:= 0
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      Flores:= Flores +1
+      FlorEsquina:= FlorEsquina +1
+    repetir FlorEsquina
+      depositarFlor
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+  comenzar
+    repetir 99
+      flores:= 0
+      mientras (HayFlorEnLaEsquina | HayPapelEnLaEsquina)
+        AgarrarFlor (flores)
+        mover
+      si (flores > 44)
+        Informar (flores)
+      Pos(PosAv +1,1) 
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin

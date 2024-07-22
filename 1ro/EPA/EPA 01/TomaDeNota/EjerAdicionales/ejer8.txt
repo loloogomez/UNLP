@@ -1,0 +1,51 @@
+programa examen
+procesos
+  proceso recorrercalles (ES floresjuntadas: numero)
+  comenzar
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      floresjuntadas:= floresjuntadas +1
+    mientras (floresjuntadas < 9)
+      mover
+      mientras HayFlorEnLaEsquina
+        tomarFlor
+        floresjuntadas:= floresjuntadas +1  
+  fin
+  proceso avenidas (ES papeles: numero)
+  comenzar
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      papeles:= papeles +1
+    repetir 99
+      mover
+      mientras HayPapelEnLaEsquina
+        tomarPapel
+        papeles:= papeles +1
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+    papeles: numero
+  comenzar
+    derecha
+    repetir 4
+      flores:= 0
+      recorrercalles (flores)
+      Pos(1,PosCa +2)
+    repetir 3
+      derecha
+    Pos(10,1)
+    repetir 3
+      avenidas (papeles)
+      Pos(PosAv +1,1)
+    Informar (papeles)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin

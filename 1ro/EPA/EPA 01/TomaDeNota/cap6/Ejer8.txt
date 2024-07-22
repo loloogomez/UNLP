@@ -1,0 +1,29 @@
+programa Ejer8
+procesos
+  proceso Avenida (E avenida: numero; E pasos: numero)
+  comenzar
+    Pos(PosAv avenida,1)
+    repetir pasos
+      mover
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    avenida: numero
+    pasos: numero
+  comenzar
+    avenida:= 7
+    pasos:= 112
+    si (pasos > 98)
+      Avenida (avenida,99)  
+    sino    
+      Avenida (avenida,pasos)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin

@@ -1,0 +1,25 @@
+programa prueba
+procesos
+  proceso JuntarCosas
+  comenzar
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  comenzar
+    JuntarCosas
+    repetir 99
+      mover
+      JuntarCosas
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info, ciudad)
+  Iniciar(R-info,1,1)
+fin

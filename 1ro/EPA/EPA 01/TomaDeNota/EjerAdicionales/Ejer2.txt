@@ -1,0 +1,51 @@
+programa Ejer2
+procesos
+  proceso Flores (ES Flores: numero; ES exacto20flores: numero)
+  comenzar
+    Flores:= 0
+    mientras HayFlorEnLaEsquina
+      tomarFlor
+      Flores:= Flores +1
+    repetir Flores
+      depositarFlor
+    si (Flores = 20)
+      exacto20flores:= exacto20flores +1
+  fin
+  proceso Papeles (ES Papeles: numero; ES menos60papeles: numero)
+  comenzar
+    Papeles:= 0
+    mientras HayPapelEnLaEsquina
+      tomarPapel
+      Papeles:= Papeles +1
+    repetir Papeles
+      depositarPapel
+    si (Papeles < 60)
+      menos60papeles:= menos60papeles +1     
+  fin
+areas
+  ciudad: AreaC(1,1,100,100)
+robots
+  robot robot1
+  variables
+    flores: numero
+    papeles: numero
+    exacto20flores: numero
+    menos60papeles: numero
+  comenzar
+    repetir 3
+      Flores (flores,exacto20flores)
+      Papeles (papeles,menos60papeles)
+      repetir 99
+        mover
+        Flores (flores,exacto20flores)
+        Papeles (papeles,menos60papeles)
+      Pos(PosAv +1,1)
+    Informar (exacto20flores)
+    Informar (menos60papeles)
+  fin
+variables
+  R-info: robot1
+comenzar
+  AsignarArea(R-info,ciudad)
+  Iniciar(R-info,1,1)
+fin

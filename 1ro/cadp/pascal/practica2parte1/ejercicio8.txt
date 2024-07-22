@@ -1,0 +1,6 @@
+a)i = un submodulo no puede ser llamado por el programa principal
+ii = se puede solucionar poniendo la variable letra como global, y poniendo la function fuera del procedure y antes de este
+
+b) i = de los valores que no son mayusculas ni minusculas
+ii = da error
+iii = agregando los valores no incluidos al if
